@@ -12,55 +12,56 @@ namespace DataSpace.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RolesController : ControllerBase
+    public class ExperimentsController : ControllerBase
     {
         private readonly SpaceContext _context;
 
-        public RolesController(SpaceContext context)
+        public ExperimentsController(SpaceContext context)
         {
             _context = context;
         }
 
-        // GET: api/Roles
+        // GET: api/Experiments
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Role>>> GetRoles()
+        public async Task<ActionResult<IEnumerable<Experiment>>> GetExperiments()
         {
-            return Strip( await _context.Roles.ToListAsync());
+            return Strip(await _context.Experiments.ToListAsync());
         }
-        private List<Role> Strip(List<Role> list)
+
+        private List<Experiment> Strip(List<Experiment> list)
         {
-            var ret = new List<Role>();
-            foreach (Role e in list)
+            var ret = new List<Experiment>();
+            foreach (Experiment e in list)
                 ret.Add(e.Strip());
             return ret;
         }
 
-        // GET: api/Roles/5
+        // GET: api/Experiments/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Role>> GetRole(int id)
+        public async Task<ActionResult<Experiment>> GetExperiment(int id)
         {
-            var role = await _context.Roles.FindAsync(id);
+            var experiment = await _context.Experiments.FindAsync(id);
 
-            if (role == null)
+            if (experiment == null)
             {
                 return NotFound();
             }
 
-            return role.Strip();
+            return experiment.Strip();
         }
 
-        // PUT: api/Roles/5
+        // PUT: api/Experiments/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutRole(int id, Role role)
+        public async Task<IActionResult> PutExperiment(int id, Experiment experiment)
         {
-            if (id != role.RoleID)
+            if (id != experiment.ExperimentID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(role).State = EntityState.Modified;
+            _context.Entry(experiment).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +69,7 @@ namespace DataSpace.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RoleExists(id))
+                if (!ExperimentExists(id))
                 {
                     return NotFound();
                 }
@@ -81,37 +82,37 @@ namespace DataSpace.Controllers
             return NoContent();
         }
 
-        // POST: api/Roles
+        // POST: api/Experiments
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public async Task<ActionResult<Role>> PostRole(Role role)
+        public async Task<ActionResult<Experiment>> PostExperiment(Experiment experiment)
         {
-            _context.Roles.Add(role);
+            _context.Experiments.Add(experiment);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetRole", new { id = role.RoleID }, role);
+            return CreatedAtAction("GetExperiment", new { id = experiment.ExperimentID }, experiment);
         }
 
-        // DELETE: api/Roles/5
+        // DELETE: api/Experiments/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Role>> DeleteRole(int id)
+        public async Task<ActionResult<Experiment>> DeleteExperiment(int id)
         {
-            var role = await _context.Roles.FindAsync(id);
-            if (role == null)
+            var experiment = await _context.Experiments.FindAsync(id);
+            if (experiment == null)
             {
                 return NotFound();
             }
 
-            _context.Roles.Remove(role);
+            _context.Experiments.Remove(experiment);
             await _context.SaveChangesAsync();
 
-            return role.Strip();
+            return experiment.Strip();
         }
 
-        private bool RoleExists(int id)
+        private bool ExperimentExists(int id)
         {
-            return _context.Roles.Any(e => e.RoleID == id);
+            return _context.Experiments.Any(e => e.ExperimentID == id);
         }
     }
 }

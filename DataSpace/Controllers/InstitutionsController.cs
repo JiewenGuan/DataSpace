@@ -25,7 +25,15 @@ namespace DataSpace.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Institution>>> GetInstitutions()
         {
-            return await _context.Institutions.ToListAsync();
+            return Strip(await _context.Institutions.ToListAsync());
+        }
+
+        private List<Institution> Strip(List<Institution> list)
+        {
+            var ret = new List<Institution>();
+            foreach (Institution e in list)
+                ret.Add(e.Strip());
+            return ret;
         }
 
         // GET: api/Institutions/5
@@ -39,7 +47,7 @@ namespace DataSpace.Controllers
                 return NotFound();
             }
 
-            return institution;
+            return institution.Strip();
         }
 
         // PUT: api/Institutions/5
@@ -113,7 +121,7 @@ namespace DataSpace.Controllers
             _context.Institutions.Remove(institution);
             await _context.SaveChangesAsync();
 
-            return institution;
+            return institution.Strip();
         }
 
         private bool InstitutionExists(string id)

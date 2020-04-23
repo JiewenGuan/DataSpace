@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -17,10 +18,31 @@ namespace DataSpace.Models
     }
     public class Platform
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)] public String PlatformID { get; set; }
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)] public int PlatformID { get; set; }
         [Required] public String Name { get; set; }
         [Required] public PlatformType Type { get; set; }
         public String Discription { get; set; }
         public virtual ICollection<Mission> Missions { get; set; }
+
+        public Platform Strip(int layer = 0)
+        {
+            Platform ret = new Platform
+            {
+                PlatformID = this.PlatformID,
+                Name = this.Name,
+                Type = this.Type,
+                Discription = this.Discription,
+                Missions = null
+            };
+            if (layer > 0)
+            {
+                ret.Missions = new List<Mission>();
+                foreach (Mission m in this.Missions)
+                {
+                    ret.Missions.Add((Mission)m.Strip(layer - 1));
+                }
+            }
+            return ret;
+        }
     }
 }

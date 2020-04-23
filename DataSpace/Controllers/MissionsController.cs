@@ -12,55 +12,55 @@ namespace DataSpace.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RolesController : ControllerBase
+    public class MissionsController : ControllerBase
     {
         private readonly SpaceContext _context;
 
-        public RolesController(SpaceContext context)
+        public MissionsController(SpaceContext context)
         {
             _context = context;
         }
 
-        // GET: api/Roles
+        // GET: api/Missions
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Role>>> GetRoles()
+        public async Task<ActionResult<IEnumerable<Mission>>> GetMissions()
         {
-            return Strip( await _context.Roles.ToListAsync());
+            return Strip(await _context.Missions.ToListAsync());
         }
-        private List<Role> Strip(List<Role> list)
+        private List<Mission> Strip(List<Mission> list)
         {
-            var ret = new List<Role>();
-            foreach (Role e in list)
+            var ret = new List<Mission>();
+            foreach (Mission e in list)
                 ret.Add(e.Strip());
             return ret;
         }
 
-        // GET: api/Roles/5
+        // GET: api/Missions/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Role>> GetRole(int id)
+        public async Task<ActionResult<Mission>> GetMission(int id)
         {
-            var role = await _context.Roles.FindAsync(id);
+            var mission = await _context.Missions.FindAsync(id);
 
-            if (role == null)
+            if (mission == null)
             {
                 return NotFound();
             }
 
-            return role.Strip();
+            return mission.Strip();
         }
 
-        // PUT: api/Roles/5
+        // PUT: api/Missions/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutRole(int id, Role role)
+        public async Task<IActionResult> PutMission(int id, Mission mission)
         {
-            if (id != role.RoleID)
+            if (id != mission.MissionID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(role).State = EntityState.Modified;
+            _context.Entry(mission).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +68,7 @@ namespace DataSpace.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RoleExists(id))
+                if (!MissionExists(id))
                 {
                     return NotFound();
                 }
@@ -81,37 +81,37 @@ namespace DataSpace.Controllers
             return NoContent();
         }
 
-        // POST: api/Roles
+        // POST: api/Missions
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public async Task<ActionResult<Role>> PostRole(Role role)
+        public async Task<ActionResult<Mission>> PostMission(Mission mission)
         {
-            _context.Roles.Add(role);
+            _context.Missions.Add(mission);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetRole", new { id = role.RoleID }, role);
+            return CreatedAtAction("GetMission", new { id = mission.MissionID }, mission);
         }
 
-        // DELETE: api/Roles/5
+        // DELETE: api/Missions/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Role>> DeleteRole(int id)
+        public async Task<ActionResult<Mission>> DeleteMission(int id)
         {
-            var role = await _context.Roles.FindAsync(id);
-            if (role == null)
+            var mission = await _context.Missions.FindAsync(id);
+            if (mission == null)
             {
                 return NotFound();
             }
 
-            _context.Roles.Remove(role);
+            _context.Missions.Remove(mission);
             await _context.SaveChangesAsync();
 
-            return role.Strip();
+            return mission.Strip();
         }
 
-        private bool RoleExists(int id)
+        private bool MissionExists(int id)
         {
-            return _context.Roles.Any(e => e.RoleID == id);
+            return _context.Missions.Any(e => e.MissionID == id);
         }
     }
 }

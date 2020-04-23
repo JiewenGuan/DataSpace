@@ -23,11 +23,11 @@ namespace DataSpace.Data
         {
             base.OnModelCreating(builder);
 
-            builder.Entity<Experiment>().HasOne(e => e.LeadIstitution).WithMany(i => i.Experiments);
-            builder.Entity<Experiment>().HasMany(e => e.Datasets).WithOne(d => d.Experiment);
-            builder.Entity<Platform>().HasMany(p => p.Missions).WithOne(m => m.Platform);
-            builder.Entity<Mission>().HasMany(m => m.Experiments).WithOne(e => e.Mission);
-            builder.Entity<Institution>().HasMany(e => e.People).WithOne(e => e.Institution);
+            builder.Entity<Experiment>().HasOne(e => e.LeadIstitution).WithMany(i => i.Experiments).HasForeignKey(e=>e.LeadInstitutionID);
+            builder.Entity<Experiment>().HasMany(e => e.Datasets).WithOne(d => d.Experiment).HasForeignKey(d=>d.ExperimentID);
+            builder.Entity<Platform>().HasMany(p => p.Missions).WithOne(m => m.Platform).HasForeignKey(m=>m.PlatformID);
+            builder.Entity<Mission>().HasMany(m => m.Experiments).WithOne(e => e.Mission).HasForeignKey(e => e.MissionID);
+            builder.Entity<Institution>().HasMany(e => e.People).WithOne(e => e.Institution).HasForeignKey(e => e.InstitutionID);
             builder.Entity<Participation>().HasOne(e => e.Participant).WithMany(p => p.Participates).HasForeignKey(e => e.PersonID);
             builder.Entity<Participation>().HasOne(e => e.Role).WithMany(r => r.Participants).HasForeignKey(e => e.RoleID);
             builder.Entity<Participation>().HasOne(p => p.Experiment).WithMany(e => e.Participants).HasForeignKey(p => p.ExperimentID);

@@ -25,12 +25,19 @@ namespace DataSpace.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Platform>>> GetPlatforms()
         {
-            return await _context.Platforms.ToListAsync();
+            return Strip(await _context.Platforms.ToListAsync());
+        }
+        private List<Platform> Strip(List<Platform> list)
+        {
+            var ret = new List<Platform>();
+            foreach (Platform e in list)
+                ret.Add(e.Strip());
+            return ret;
         }
 
         // GET: api/Platforms/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Platform>> GetPlatform(string id)
+        public async Task<ActionResult<Platform>> GetPlatform(int id)
         {
             var platform = await _context.Platforms.FindAsync(id);
 
@@ -39,14 +46,14 @@ namespace DataSpace.Controllers
                 return NotFound();
             }
 
-            return platform;
+            return platform.Strip();
         }
 
         // PUT: api/Platforms/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPlatform(string id, Platform platform)
+        public async Task<IActionResult> PutPlatform(int id, Platform platform)
         {
             if (id != platform.PlatformID)
             {
@@ -88,7 +95,7 @@ namespace DataSpace.Controllers
 
         // DELETE: api/Platforms/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Platform>> DeletePlatform(string id)
+        public async Task<ActionResult<Platform>> DeletePlatform(int id)
         {
             var platform = await _context.Platforms.FindAsync(id);
             if (platform == null)
@@ -99,10 +106,10 @@ namespace DataSpace.Controllers
             _context.Platforms.Remove(platform);
             await _context.SaveChangesAsync();
 
-            return platform;
+            return platform.Strip();
         }
 
-        private bool PlatformExists(string id)
+        private bool PlatformExists(int id)
         {
             return _context.Platforms.Any(e => e.PlatformID == id);
         }

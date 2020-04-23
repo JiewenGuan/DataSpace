@@ -12,55 +12,54 @@ namespace DataSpace.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RolesController : ControllerBase
+    public class PeopleController : ControllerBase
     {
         private readonly SpaceContext _context;
 
-        public RolesController(SpaceContext context)
+        public PeopleController(SpaceContext context)
         {
             _context = context;
         }
 
-        // GET: api/Roles
+        // GET: api/People
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Role>>> GetRoles()
+        public async Task<ActionResult<IEnumerable<Person>>> GetPeople()
         {
-            return Strip( await _context.Roles.ToListAsync());
+            return Strip( await _context.People.ToListAsync());
         }
-        private List<Role> Strip(List<Role> list)
+        private List<Person> Strip(List<Person> list)
         {
-            var ret = new List<Role>();
-            foreach (Role e in list)
+            var ret = new List<Person>();
+            foreach (Person e in list)
                 ret.Add(e.Strip());
             return ret;
         }
-
-        // GET: api/Roles/5
+        // GET: api/People/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Role>> GetRole(int id)
+        public async Task<ActionResult<Person>> GetPerson(int id)
         {
-            var role = await _context.Roles.FindAsync(id);
+            var person = await _context.People.FindAsync(id);
 
-            if (role == null)
+            if (person == null)
             {
                 return NotFound();
             }
 
-            return role.Strip();
+            return person.Strip();
         }
 
-        // PUT: api/Roles/5
+        // PUT: api/People/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutRole(int id, Role role)
+        public async Task<IActionResult> PutPerson(int id, Person person)
         {
-            if (id != role.RoleID)
+            if (id != person.PersonID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(role).State = EntityState.Modified;
+            _context.Entry(person).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +67,7 @@ namespace DataSpace.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RoleExists(id))
+                if (!PersonExists(id))
                 {
                     return NotFound();
                 }
@@ -81,37 +80,37 @@ namespace DataSpace.Controllers
             return NoContent();
         }
 
-        // POST: api/Roles
+        // POST: api/People
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public async Task<ActionResult<Role>> PostRole(Role role)
+        public async Task<ActionResult<Person>> PostPerson(Person person)
         {
-            _context.Roles.Add(role);
+            _context.People.Add(person);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetRole", new { id = role.RoleID }, role);
+            return CreatedAtAction("GetPerson", new { id = person.PersonID }, person);
         }
 
-        // DELETE: api/Roles/5
+        // DELETE: api/People/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Role>> DeleteRole(int id)
+        public async Task<ActionResult<Person>> DeletePerson(int id)
         {
-            var role = await _context.Roles.FindAsync(id);
-            if (role == null)
+            var person = await _context.People.FindAsync(id);
+            if (person == null)
             {
                 return NotFound();
             }
 
-            _context.Roles.Remove(role);
+            _context.People.Remove(person);
             await _context.SaveChangesAsync();
 
-            return role.Strip();
+            return person.Strip();
         }
 
-        private bool RoleExists(int id)
+        private bool PersonExists(int id)
         {
-            return _context.Roles.Any(e => e.RoleID == id);
+            return _context.People.Any(e => e.PersonID == id);
         }
     }
 }
