@@ -8986,19 +8986,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\heiye\\.nuget\\packages\\": {}
+    "C:\\Users\\yvzen\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\heiye\\Desktop\\2020Summer\\capstone\\DataSpace\\DataSpace\\DataSpace.csproj",
+      "projectUniqueName": "C:\\Users\\yvzen\\OneDrive\\RMIT University\\Programming Project 1\\primary_code\\DataSpace\\DataSpace\\DataSpace.csproj",
       "projectName": "DataSpace",
-      "projectPath": "C:\\Users\\heiye\\Desktop\\2020Summer\\capstone\\DataSpace\\DataSpace\\DataSpace.csproj",
-      "packagesPath": "C:\\Users\\heiye\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\heiye\\Desktop\\2020Summer\\capstone\\DataSpace\\DataSpace\\obj\\",
+      "projectPath": "C:\\Users\\yvzen\\OneDrive\\RMIT University\\Programming Project 1\\primary_code\\DataSpace\\DataSpace\\DataSpace.csproj",
+      "packagesPath": "C:\\Users\\yvzen\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\yvzen\\OneDrive\\RMIT University\\Programming Project 1\\primary_code\\DataSpace\\DataSpace\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\heiye\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\yvzen\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9079,7 +9079,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
       }
     }
   }
