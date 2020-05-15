@@ -14,31 +14,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.DateOfSubmission)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.TOA)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Aim)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Objective)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Summary)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ModuleDrawing)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EvaluationStatus)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ExperimentDate)
@@ -52,9 +31,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.LeadIstitution)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Mission)
-            </th>
+            
             <th></th>
         </tr>
     </thead>
@@ -62,31 +39,10 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.DateOfSubmission)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TOA)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Aim)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Objective)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Summary)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModuleDrawing)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EvaluationStatus)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ExperimentDate)
@@ -98,10 +54,7 @@
                 @Html.DisplayFor(modelItem => item.SocialEconomicObjective)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LeadIstitution.ABN)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Mission.Name)
+                @Html.DisplayFor(modelItem => item.LeadIstitution.Name)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ExperimentID">Edit</a> |

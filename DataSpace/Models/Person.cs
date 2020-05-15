@@ -23,5 +23,9 @@ namespace DataSpace.Models
         [JsonIgnore] public ICollection<Participation> Participates { get; set; }
         [JsonIgnore] public Institution Institution { get; set; }
 
+        public String GetName()
+        {
+            return FirstName + " " + FamilyName;
+        }
     }
 }
