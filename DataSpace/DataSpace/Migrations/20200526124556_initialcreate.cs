@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DataSpace.Migrations
@@ -12,7 +13,7 @@ namespace DataSpace.Migrations
                 columns: table => new
                 {
                     RoleID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Title = table.Column<string>(nullable: false),
                     RoleDescription = table.Column<string>(nullable: false),
                     DateOfSubmission = table.Column<DateTime>(nullable: false),
@@ -42,7 +43,7 @@ namespace DataSpace.Migrations
                 columns: table => new
                 {
                     PlatformID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: false),
                     Type = table.Column<int>(nullable: false),
                     Discription = table.Column<string>(nullable: true),
@@ -59,10 +60,11 @@ namespace DataSpace.Migrations
                 columns: table => new
                 {
                     PersonID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     FirstName = table.Column<string>(nullable: false),
                     FamilyName = table.Column<string>(nullable: false),
                     Affiliation = table.Column<string>(nullable: false),
+                    IsAdmin = table.Column<bool>(nullable: false),
                     City = table.Column<string>(nullable: false),
                     State = table.Column<string>(nullable: false),
                     Country = table.Column<string>(nullable: false),
@@ -87,7 +89,7 @@ namespace DataSpace.Migrations
                 columns: table => new
                 {
                     MissionID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: false),
                     Commancement = table.Column<DateTime>(nullable: false),
                     Conclusion = table.Column<DateTime>(nullable: false),
@@ -133,7 +135,7 @@ namespace DataSpace.Migrations
                 columns: table => new
                 {
                     ExperimentID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     DateOfSubmission = table.Column<DateTime>(nullable: false),
                     EvaluationStatus = table.Column<int>(nullable: false),
                     AuthorId = table.Column<int>(nullable: false),
@@ -178,7 +180,7 @@ namespace DataSpace.Migrations
                 columns: table => new
                 {
                     ParticipateID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     PersonID = table.Column<int>(nullable: false),
                     RoleID = table.Column<int>(nullable: false),
                     ExperimentID = table.Column<int>(nullable: false)
@@ -197,7 +199,7 @@ namespace DataSpace.Migrations
                         column: x => x.PersonID,
                         principalTable: "People",
                         principalColumn: "PersonID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Participations_ExpRoles_RoleID",
                         column: x => x.RoleID,
@@ -211,7 +213,7 @@ namespace DataSpace.Migrations
                 columns: table => new
                 {
                     DatasetID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: false),
                     RepoUrl = table.Column<string>(nullable: false),
                     ExperimentID = table.Column<int>(nullable: false),

@@ -15,6 +15,7 @@ namespace DataSpace.Models
         [Required] public String FirstName { get; set; }
         [Required] public String FamilyName { get; set; }
         [Required] public String Affiliation { get; set; }
+        [Required] public bool IsAdmin { get; set; }
         [Required] public String City { get; set; }
         [Required] public String State { get; set; }
         [Required] public String Country { get; set; }

@@ -111,8 +111,9 @@ namespace DataSpace.Data
                     Country = "Australia",
                     Email = "example@email.com",
                     InstitutionID = "49 781 030 034",
-                        DateOfSubmission = DateTime.Now,
-                        EvaluationStatus = EvaluationStatus.Approved
+                    DateOfSubmission = DateTime.Now,
+                    EvaluationStatus = EvaluationStatus.Approved,
+                    IsAdmin = true
                 },
                 new Person
                 {
@@ -124,8 +125,10 @@ namespace DataSpace.Data
                     Country = "Australia",
                     Email = "example2@email.com",
                     InstitutionID = "84 002 705 224",
-                        DateOfSubmission = DateTime.Now,
-                        EvaluationStatus = EvaluationStatus.Approved
+                    DateOfSubmission = DateTime.Now,
+                    EvaluationStatus = EvaluationStatus.Approved,
+                    IsAdmin = false
+
                 }
             };
             List<Login> logins = new List<Login>

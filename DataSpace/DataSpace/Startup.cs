@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace DataSpace
 {
@@ -27,7 +28,9 @@ namespace DataSpace
         {
             services.AddDbContext<SpaceContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString(nameof(SpaceContext)));
+                options.UseMySql("Server=localhost;Database=space;User=root;Password=123asd;", mySqlOptions => mySqlOptions
+                 .ServerVersion(new Version(8, 0, 18), ServerType.MySql));
+                //options.UseSqlServer(Configuration.GetConnectionString(nameof(SpaceContext)));
                 options.UseLazyLoadingProxies();
             });
             services.AddDistributedMemoryCache();
@@ -38,7 +41,6 @@ namespace DataSpace
                 options.IdleTimeout = new System.TimeSpan(2, 0, 0);
             });
             services.AddControllersWithViews();
-            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
