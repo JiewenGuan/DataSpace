@@ -156,3 +156,4 @@ C:\Users\heiye\Desktop\2020Summer\capstone\DataSpace\DataSpace\DataSpace\bin\Deb
 C:\Users\heiye\Desktop\2020Summer\capstone\DataSpace\DataSpace\DataSpace\obj\Debug\netcoreapp3.1\DataSpace.csproj.CoreCompileInputs.cache
 C:\Users\heiye\Desktop\2020Summer\capstone\DataSpace\DataSpace\DataSpace\obj\Debug\netcoreapp3.1\DataSpace.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\heiye\Desktop\2020Summer\capstone\DataSpace\DataSpace\DataSpace\obj\Debug\netcoreapp3.1\DataSpace.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\heiye\Desktop\2020Summer\capstone\DataSpace\DataSpace\DataSpace\obj\Debug\netcoreapp3.1\Razor\Views\Login\Login.cshtml.g.cs

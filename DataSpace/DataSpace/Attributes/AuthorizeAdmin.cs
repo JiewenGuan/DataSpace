@@ -11,8 +11,8 @@ namespace DataSpace.Attributes
     {
         public void OnAuthorization(AuthorizationFilterContext context)
         {
-            var customerID = context.HttpContext.Session.GetString(nameof(Person.FamilyName));
-            if (customerID.IsNullOrEmpty())
+            String customerID = context.HttpContext.Session.GetString(nameof(Person.FamilyName));
+            if (String.IsNullOrEmpty(customerID))
             {
                 context.Result = new RedirectToActionResult("Index", "Home", null);
             }

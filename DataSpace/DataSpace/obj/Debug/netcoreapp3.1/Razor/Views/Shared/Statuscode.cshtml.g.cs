@@ -26,8 +26,29 @@ using DataSpace.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\heiye\Desktop\2020Summer\capstone\DataSpace\DataSpace\DataSpace\Views\_ViewImports.cshtml"
+using X.PagedList;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\heiye\Desktop\2020Summer\capstone\DataSpace\DataSpace\DataSpace\Views\_ViewImports.cshtml"
+using X.PagedList.Mvc.Core;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\heiye\Desktop\2020Summer\capstone\DataSpace\DataSpace\DataSpace\Views\_ViewImports.cshtml"
+using X.PagedList.Mvc.Core.Common;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f7155ddad355aa6c5cf7e9c77845895e997f8c5e", @"/Views/Shared/Statuscode.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e7d912d0f7afd10a01452a4989efee98cea12581", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0f8052906e74db7d5f903f098e6f7dd4f9ed4e48", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Statuscode : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<Int32>
     {
         #pragma warning disable 1998

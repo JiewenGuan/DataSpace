@@ -43,7 +43,8 @@ namespace DataSpace.Controllers
             if(login.Person.IsAdmin)
                 HttpContext.Session.SetString(nameof(Person.FamilyName), login.Person.FamilyName);
 
-            return RedirectToAction("Index", "Customer");
+            //TODO: redirect to submission page
+            return RedirectToAction("Index", "Home");
         }
         [Route("LogoutNow")]
         public IActionResult Logout()

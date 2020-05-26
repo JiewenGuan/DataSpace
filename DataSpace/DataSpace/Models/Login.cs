@@ -11,7 +11,7 @@ namespace DataSpace.Models
 {
     public class Login
     {
-        [Key, Required, DatabaseGenerated(DatabaseGeneratedOption.None),StringLength(50, MinimumLength = 20)]
+        [Key, Required, DatabaseGenerated(DatabaseGeneratedOption.None),StringLength(50, MinimumLength = 10)]
         public string LoginID { get; set; }
 
         [Required, StringLength(64)] public string PasswordHash { get; set; }
