@@ -54,10 +54,20 @@ namespace DataSpace.Data
                     Name = "University of Melbourne",
                         DateOfSubmission = DateTime.Now,
                         EvaluationStatus = EvaluationStatus.Approved
+                },
+                new Institution
+                {
+                    ABN = "00 000 000 000",
+                    Name = "--SELECT-INSTITUTION--",
+                        DateOfSubmission = DateTime.Now,
+                        EvaluationStatus = EvaluationStatus.Approved
                 }
             };
             List<Platform> platforms = new List<Platform>
             {
+                new Platform {Name = "--SELECT-PLATFORM--",Type = PlatformType.Other,
+                        DateOfSubmission = DateTime.Now,
+                        EvaluationStatus = EvaluationStatus.Approved},
                 new Platform {Name = "ISS",Type = PlatformType.Space_Station, Discription = "International Space Station",
                         DateOfSubmission = DateTime.Now,
                         EvaluationStatus = EvaluationStatus.Approved},
@@ -75,10 +85,8 @@ namespace DataSpace.Data
                         EvaluationStatus = EvaluationStatus.Approved},
                 new Platform {Name = "Apollo",Type = PlatformType.Space_Station,
                         DateOfSubmission = DateTime.Now,
-                        EvaluationStatus = EvaluationStatus.Approved},
-                new Platform {Name = "Columbia",Type = PlatformType.Space_Shuttle,
-                        DateOfSubmission = DateTime.Now,
-                        EvaluationStatus = EvaluationStatus.Approved},
+                        EvaluationStatus = EvaluationStatus.Approved}
+                
             };
             List<Mission> missions = new List<Mission>
             {
@@ -91,7 +99,7 @@ namespace DataSpace.Data
                         EvaluationStatus = EvaluationStatus.Approved
                 },
                 new Mission{
-                    Name = "STS-107",
+                    Name = "--SELECT-MISSION--",
                     Commancement = new DateTime(2003, 1,16,15,39,0,DateTimeKind.Utc),
                     Conclusion = new DateTime(2003, 2,1,13,59,32,DateTimeKind.Utc),
                     PlatformID = 7,
@@ -110,7 +118,7 @@ namespace DataSpace.Data
                     State = "Victoria",
                     Country = "Australia",
                     Email = "example@email.com",
-                    InstitutionID = "49 781 030 034",
+                    InstitutionID = "00 000 000 000",
                     DateOfSubmission = DateTime.Now,
                     EvaluationStatus = EvaluationStatus.Approved,
                     IsAdmin = true
@@ -124,7 +132,7 @@ namespace DataSpace.Data
                     State = "Victoria",
                     Country = "Australia",
                     Email = "example2@email.com",
-                    InstitutionID = "84 002 705 224",
+                    InstitutionID = "00 000 000 000",
                     DateOfSubmission = DateTime.Now,
                     EvaluationStatus = EvaluationStatus.Approved,
                     IsAdmin = false
@@ -138,14 +146,14 @@ namespace DataSpace.Data
                     LoginID = "Dataspace_1",
                     PasswordHash = PBKDF2.Hash("Asa2020"),
                     ModifyDate = DateTime.Now,
-                    PersonID = 1
+                    PersonID = 2
                 },
                 new Login
                 {
                     LoginID = "Dataspace_2",
                     PasswordHash = PBKDF2.Hash("Asa2020"),
                     ModifyDate = DateTime.Now,
-                    PersonID = 2
+                    PersonID = 1
                 }
             };
             List<Experiment> experiments = new List<Experiment>{
@@ -162,7 +170,7 @@ namespace DataSpace.Data
                     EvaluationStatus = EvaluationStatus.Approved,
                     FeildOfResearch = "000000",
                     SocialEconomicObjective = "000000",
-                    LeadInstitutionID = "84 002 705 224",
+                    LeadInstitutionID = "00 000 000 000",
                     MissionID = 1,
                     AuthorId = 1
                 },
@@ -179,7 +187,7 @@ namespace DataSpace.Data
                     EvaluationStatus = EvaluationStatus.Approved,
                     FeildOfResearch = "000000",
                     SocialEconomicObjective = "000000",
-                    LeadInstitutionID = "84 002 705 224",
+                    LeadInstitutionID = "00 000 000 000",
                     MissionID = 1,
                     AuthorId = 1
                 }

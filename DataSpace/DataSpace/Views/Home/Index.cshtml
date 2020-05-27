@@ -2,13 +2,17 @@
 
 @{
     ViewData["Title"] = "Experiments";
+    var isLoggedIn = Context.Session.GetInt32(nameof(Person.PersonID)).HasValue;
 }
 
 <h1>Experiments</h1>
 
-<p>
-    <a asp-action="Create">Submmit new Experiment</a>
-</p>
+@if (isLoggedIn)
+{
+    <p>
+        <a asp-action="Create">Submmit new Experiment</a>
+    </p>
+}
 <table class="table">
     <thead>
         <tr>
@@ -39,7 +43,7 @@
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Title)
-                </td>                
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Aim)
                 </td>

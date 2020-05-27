@@ -1,0 +1,90 @@
+﻿@model DataSpace.Models.Experiment
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Experiment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ExperimentID" />
+            <input type="hidden" asp-for="DateOfSubmission" value="@Model.DateOfSubmission" />
+            <input type="hidden" asp-for="EvaluationStatus" value="@Model.EvaluationStatus" />
+            <input type="hidden" asp-for="AuthorId" value="@Model.AuthorId" />
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TOA" class="control-label"></label>
+                <select asp-for="TOA" asp-items="@Html.GetEnumSelectList<ActivityType>()" class="form-control"></select>
+                <span asp-validation-for="TOA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Aim" class="control-label"></label>
+                <input asp-for="Aim" class="form-control" />
+                <span asp-validation-for="Aim" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Objective" class="control-label"></label>
+                <input asp-for="Objective" class="form-control" />
+                <span asp-validation-for="Objective" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Summary" class="control-label"></label>
+                <input asp-for="Summary" class="form-control" />
+                <span asp-validation-for="Summary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ModuleDrawing" class="control-label"></label>
+                <input asp-for="ModuleDrawing" class="form-control" />
+                <span asp-validation-for="ModuleDrawing" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <select asp-for="Status" class="form-control" asp-items="@Html.GetEnumSelectList<ExperimentStatus>()"></select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExperimentDate" class="control-label"></label>
+                <input asp-for="ExperimentDate" class="form-control" />
+                <span asp-validation-for="ExperimentDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FeildOfResearch" class="control-label"></label>
+                <input asp-for="FeildOfResearch" class="form-control" />
+                <span asp-validation-for="FeildOfResearch" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SocialEconomicObjective" class="control-label"></label>
+                <input asp-for="SocialEconomicObjective" class="form-control" />
+                <span asp-validation-for="SocialEconomicObjective" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeadInstitutionID" class="control-label">Lead Institution</label>
+                <select asp-for="LeadInstitutionID" class="form-control" asp-items="ViewBag.LeadInstitutionID"></select>
+                <span asp-validation-for="LeadInstitutionID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MissionID" class="control-label">Mission</label>
+                <select asp-for="MissionID" class="form-control" asp-items="ViewBag.MissionID"></select>
+                <span asp-validation-for="MissionID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

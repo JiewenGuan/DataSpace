@@ -1,0 +1,87 @@
+﻿@model DataSpace.Models.Experiment
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int userid = Context.Session.GetInt32(nameof(Person.PersonID)).Value;
+}
+
+<h1>Create</h1>
+
+<h4>Experiment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <input type="hidden" asp-for="DateOfSubmission" value="@DateTime.Now"/>
+            <input type="hidden" asp-for="EvaluationStatus" value="@EvaluationStatus.Preparing"/>
+            <input type="hidden" asp-for="AuthorId" value="@userid"/>
+            <input type="hidden" asp-for="LeadInstitutionID" value="00 000 000 000"/>
+            <input type="hidden" asp-for="MissionID" value="1"/>
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TOA" class="control-label"></label>
+                <select asp-for="TOA" asp-items="Html.GetEnumSelectList<ActivityType>()" class="form-control">
+                    <option>Select type ...</option>
+                </select>
+                <span asp-validation-for="TOA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Aim" class="control-label"></label>
+                <input asp-for="Aim" class="form-control" />
+                <span asp-validation-for="Aim" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Objective" class="control-label"></label>
+                <input asp-for="Objective" class="form-control" />
+                <span asp-validation-for="Objective" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Summary" class="control-label"></label>
+                <textarea asp-for="Summary" class="form-control"></textarea>
+                <span asp-validation-for="Summary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ModuleDrawing" class="control-label"></label>
+                <input asp-for="ModuleDrawing" class="form-control" />
+                <span asp-validation-for="ModuleDrawing" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <select asp-for="Status" asp-items="Html.GetEnumSelectList<ExperimentStatus>()" class="form-control">
+                    <option>Select Status ...</option>
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExperimentDate" class="control-label"></label>
+                <input asp-for="ExperimentDate" class="form-control" />
+                <span asp-validation-for="ExperimentDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FeildOfResearch" class="control-label"></label>
+                <input asp-for="FeildOfResearch" class="form-control" />
+                <span asp-validation-for="FeildOfResearch" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SocialEconomicObjective" class="control-label"></label>
+                <input asp-for="SocialEconomicObjective" class="form-control" />
+                <span asp-validation-for="SocialEconomicObjective" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Next" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

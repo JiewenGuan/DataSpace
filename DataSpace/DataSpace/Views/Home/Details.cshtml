@@ -4,6 +4,9 @@
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    int? UserID = null;
+    if (Context.Session.GetInt32(nameof(Person.PersonID)).HasValue)
+        UserID = Context.Session.GetInt32(nameof(Person.PersonID)).Value;
 }
 
 <h1>Details</h1>
@@ -103,6 +106,9 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.ExperimentID">Edit</a> |
+    @if (Model.AuthorId == UserID) 
+    {
+        <a asp-action="Edit" asp-route-id="@Model.ExperimentID">Edit  </a>   
+    }
     <a asp-action="Index">Back to List</a>
 </div>
