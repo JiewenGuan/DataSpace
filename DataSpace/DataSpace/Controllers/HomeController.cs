@@ -19,7 +19,6 @@ namespace DataSpace.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly SpaceContext _context;
-        private int PersonID => HttpContext.Session.GetInt32(nameof(Person.PersonID)).Value;
         public HomeController(ILogger<HomeController> logger, SpaceContext context)
         {
             _logger = logger;
@@ -49,7 +48,7 @@ namespace DataSpace.Controllers
         {
             experiment.DateOfSubmission = DateTime.Now;
             experiment.EvaluationStatus = EvaluationStatus.Preparing;
-            experiment.AuthorId = PersonID;
+            experiment.AuthorId = HttpContext.Session.GetInt32(nameof(Person.PersonID)).Value;
             experiment.LeadInstitutionID = "00 000 000 000";
             experiment.MissionID = 1;
 
@@ -69,7 +68,7 @@ namespace DataSpace.Controllers
                 return NotFound();
             }
             var experiment = await _context.Experiments.FindAsync(id);
-            if (experiment == null || experiment.AuthorId != PersonID)
+            if (experiment == null || experiment.AuthorId != HttpContext.Session.GetInt32(nameof(Person.PersonID)).Value)
             {
                 return NotFound();
             }
@@ -92,18 +91,27 @@ namespace DataSpace.Controllers
                 ModelState.AddModelError(nameof(experiment.MissionID), "Select a Mission");
             if (experiment.LeadInstitutionID == "00 000 000 000")
                 ModelState.AddModelError(nameof(experiment.LeadInstitutionID), "Select a Institution");
-            if (experiment.AuthorId != oldExp.AuthorId)
-                ModelState.AddModelError(nameof(experiment.LeadInstitutionID), "You can not change hidden fields");
-            if (experiment.EvaluationStatus != oldExp.EvaluationStatus)
-                ModelState.AddModelError(nameof(experiment.LeadInstitutionID), "You can not change hidden fields");
-            if (experiment.DateOfSubmission != oldExp.DateOfSubmission)
-                ModelState.AddModelError(nameof(experiment.LeadInstitutionID), "You can not change hidden fields");
+            
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(experiment);
+                    //_context.Update(experiment);
+                    oldExp.Title = experiment.Title;
+                    oldExp.TOA = experiment.TOA;
+                    oldExp.Aim = experiment.Aim;
+                    oldExp.Objective = experiment.Objective;
+                    oldExp.Summary = experiment.Summary;
+                    oldExp.ModuleDrawing = experiment.ModuleDrawing;
+                    oldExp.Status = experiment.Status;
+                    oldExp.ExperimentDate = experiment.ExperimentDate;
+                    oldExp.FeildOfResearch = experiment.FeildOfResearch;
+                    oldExp.SocialEconomicObjective = experiment.SocialEconomicObjective;
+                    oldExp.LeadInstitutionID = experiment.LeadInstitutionID;
+                    oldExp.MissionID = experiment.MissionID;
+                    oldExp.EvaluationStatus = EvaluationStatus.Submitted;
+                    _context.Update(oldExp);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
