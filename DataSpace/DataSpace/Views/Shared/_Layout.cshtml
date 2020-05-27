@@ -23,11 +23,10 @@
                             var isLoggedIn = Context.Session.GetInt32(nameof(Person.PersonID)).HasValue;
                             var lastname = Context.Session.GetString(nameof(Person.FamilyName));
                             var name = Context.Session.GetString(nameof(Person.FirstName));
-                            var greet = "Welcome, ";
-                            if (!String.IsNullOrEmpty(lastname))
+                            var isAdmin = !String.IsNullOrEmpty(lastname);
+                            if (isAdmin)
                             {
                                 name = name + " " + lastname;
-                                greet = greet + " " + "Administrator ";
                             }
 
 
@@ -36,8 +35,18 @@
                         {
                             <li class="nav-item">
                                 <span class="nav-link text-dark">
-                                    @greet @name
+                                    Welcome,
                                 </span>
+                            </li>
+                            @if (isAdmin)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Admin" asp-action="Index">Administrator</a>
+                                </li>
+                            }
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="User" asp-action="Index">@name</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-controller="Login" asp-action="Logout">Logout</a>
@@ -47,26 +56,6 @@
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-controller="Login" asp-action="Login">Login</a>
-                            </li>
-                        }
-                    </ul>
-                    <ul class="navbar-nav flex-grow-1">
-                        @if (isLoggedIn)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Customer" asp-action="Index">MyATM</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Customer" asp-action="Statement">My Statement</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Customer" asp-action="Profile">My Profile</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Bill" asp-action="Index">My Bills</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Customer" asp-action="Password">Change Password</a>
                             </li>
                         }
                     </ul>

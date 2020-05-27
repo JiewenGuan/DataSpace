@@ -63,7 +63,7 @@ namespace DataSpace
             app.UseRouting();
 
             app.UseAuthorization();
-            app.UseStatusCodePagesWithRedirects("/Home/StatusCode/?code={0}");
+            //app.UseStatusCodePagesWithRedirects("/Home/StatusCode/?code={0}");
 
             app.UseEndpoints(endpoints =>
             {
