@@ -194,3 +194,9 @@ C:\Users\heiye\Desktop\2020Summer\capstone\DataSpace\DataSpace\DataSpace\obj\Deb
 C:\Users\heiye\Desktop\2020Summer\capstone\DataSpace\DataSpace\DataSpace\obj\Debug\netcoreapp3.1\DataSpace.csprojAssemblyReference.cache
 C:\Users\heiye\Desktop\2020Summer\capstone\DataSpace\DataSpace\DataSpace\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Details.cshtml.g.cs
 C:\Users\heiye\Desktop\2020Summer\capstone\DataSpace\DataSpace\DataSpace\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Review.cshtml.g.cs
+C:\Users\heiye\Desktop\2020Summer\capstone\DataSpace\DataSpace\DataSpace\obj\Debug\netcoreapp3.1\Razor\Views\Home\AddingPeople.cshtml.g.cs
+C:\Users\heiye\Desktop\2020Summer\capstone\DataSpace\DataSpace\DataSpace\obj\Debug\netcoreapp3.1\Razor\Views\Participations\Create.cshtml.g.cs
+C:\Users\heiye\Desktop\2020Summer\capstone\DataSpace\DataSpace\DataSpace\obj\Debug\netcoreapp3.1\Razor\Views\Participations\Delete.cshtml.g.cs
+C:\Users\heiye\Desktop\2020Summer\capstone\DataSpace\DataSpace\DataSpace\obj\Debug\netcoreapp3.1\Razor\Views\Participations\Details.cshtml.g.cs
+C:\Users\heiye\Desktop\2020Summer\capstone\DataSpace\DataSpace\DataSpace\obj\Debug\netcoreapp3.1\Razor\Views\Participations\Edit.cshtml.g.cs
+C:\Users\heiye\Desktop\2020Summer\capstone\DataSpace\DataSpace\DataSpace\obj\Debug\netcoreapp3.1\Razor\Views\Participations\Index.cshtml.g.cs

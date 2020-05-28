@@ -107,6 +107,7 @@
 </div>
 <div>
     <a asp-action="Approve" asp-route-id="@Model.ExperimentID">Approve  </a>
+    <a asp-action="Reject" asp-route-id="@Model.ExperimentID">Reject  </a>
     @if (Model.AuthorId == UserID)
     {
         <a asp-action="Edit" asp-route-id="@Model.ExperimentID">Edit  </a>

@@ -105,10 +105,43 @@
         </dd>
     </dl>
 </div>
+<h3>Participants</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                First Name
+            </th>
+            <th>
+                Family Name
+            </th>
+            <th>
+                Role
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Participants)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Participant.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Participant.FamilyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Role.Title)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
 <div>
-    @if (Model.AuthorId == UserID) 
+    @if (Model.AuthorId == UserID)
     {
-        <a asp-action="Edit" asp-route-id="@Model.ExperimentID">Edit  </a>   
+        <a asp-action="Edit" asp-route-id="@Model.ExperimentID">Edit  </a>
     }
     <a asp-action="Index">Back to List</a>
 </div>

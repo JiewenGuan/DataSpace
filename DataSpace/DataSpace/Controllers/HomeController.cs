@@ -27,6 +27,8 @@ namespace DataSpace.Controllers
 
         public IActionResult Index()
         {
+
+
             var experiments = _context.Experiments.Include(e => e.Author).Include(e => e.LeadIstitution).Include(e => e.Mission);
             return View(experiments.Where(p => p.EvaluationStatus == EvaluationStatus.Approved).ToList());
         }
@@ -91,7 +93,7 @@ namespace DataSpace.Controllers
                 ModelState.AddModelError(nameof(experiment.MissionID), "Select a Mission");
             if (experiment.LeadInstitutionID == "00 000 000 000")
                 ModelState.AddModelError(nameof(experiment.LeadInstitutionID), "Select a Institution");
-            
+
 
             if (ModelState.IsValid)
             {
@@ -178,5 +180,46 @@ namespace DataSpace.Controllers
             return _context.Experiments.Any(e => e.ExperimentID == id);
         }
 
+        public IActionResult AddingPeople(int id)
+        {
+            var experiment = _context.Experiments.FindAsync(id);
+            ViewData["ExperimentID"] = id;
+            ViewData["PersonID"] = new SelectList(_context.People, "PersonID", "Email");
+            ViewData["RoleID"] = new SelectList(_context.ExpRoles, "RoleID", "Title");
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddingPeople([Bind("ParticipateID,PersonID,RoleID,ExperimentID")] Participation participation)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(participation);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Edit),new { id = participation.ExperimentID });
+            }
+            ViewData["ExperimentID"] = new SelectList(_context.Experiments, "ExperimentID", "Aim", participation.ExperimentID);
+            ViewData["PersonID"] = new SelectList(_context.People, "PersonID", "Affiliation", participation.PersonID);
+            ViewData["RoleID"] = new SelectList(_context.ExpRoles, "RoleID", "RoleDescription", participation.RoleID);
+            return View(participation);
+
+        }
+
+
+        public async Task<IActionResult> RemovePeople(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var participation = await _context.Participations.FindAsync(id);
+            if (participation == null)
+            {
+                return NotFound();
+            }
+            var expid = participation.ExperimentID;
+            _context.Participations.Remove(participation);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Edit), new { id = expid });
+        }
     }
 }

@@ -68,6 +68,22 @@ namespace DataSpace.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Review));
         }
+        public async Task<IActionResult> Reject(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var experiment = await _context.Experiments.FindAsync(id);
+            if (experiment == null)
+            {
+                return NotFound();
+            }
+            experiment.EvaluationStatus = EvaluationStatus.Rejected;
+            _context.Update(experiment);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Review));
+        }
 
         public IActionResult Accounts()
         {

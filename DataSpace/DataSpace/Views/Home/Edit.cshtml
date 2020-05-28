@@ -88,3 +88,49 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Participants</h3>
+
+<p>
+    <a asp-action="AddingPeople" asp-route-id="@Model.ExperimentID">Add People</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                First Name
+            </th>
+            <th>
+                Family Name
+            </th>
+            <th>
+                Role
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Participants)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Participant.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Participant.FamilyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Role.Title)
+                </td>
+                
+                <td>
+                    <a asp-action="RemovePeople" asp-route-id="@item.ParticipateID">Remove</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
