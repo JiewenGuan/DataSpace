@@ -20,7 +20,8 @@ namespace DataSpace.Controllers
 
         public IActionResult Index()
         {
-            return Redirect("/Home/StatusCode/?code=101");
+            var experiments = _context.Experiments.Include(e => e.Author).Include(e => e.LeadIstitution).Include(e => e.Mission);
+            return View(experiments.Where(p => p.AuthorId == PersonID).OrderBy(p=>p.EvaluationStatus).ToList());
         }
         public async Task<IActionResult> Profile()
         {

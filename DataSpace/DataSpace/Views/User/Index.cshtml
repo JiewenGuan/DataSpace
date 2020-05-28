@@ -1,0 +1,62 @@
+﻿@model IEnumerable<DataSpace.Models.Experiment>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>My Experiments</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfSubmission)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EvaluationStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FeildOfResearch)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SocialEconomicObjective)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeadIstitution)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfSubmission)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EvaluationStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FeildOfResearch)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SocialEconomicObjective)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeadIstitution.ABN)
+            </td>
+            <td>
+                <a asp-controller="Home" asp-action="Edit" asp-route-id="@item.ExperimentID">Edit</a> |
+                <a asp-controller="Home" asp-action="Details" asp-route-id="@item.ExperimentID">Details</a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
