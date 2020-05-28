@@ -3,6 +3,8 @@
 @{
     ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var admin = Context.Session.GetString(nameof(Person.FamilyName));
+    var isAdmin = !String.IsNullOrEmpty(admin);
 }
 
 <h1>Edit</h1>
@@ -29,11 +31,6 @@
                 <input asp-for="Affiliation" class="form-control" />
                 <span asp-validation-for="Affiliation" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsAdmin" /> @Html.DisplayNameFor(model => model.IsAdmin)
-                </label>
-            </div>
             <div class="form-group">
                 <label asp-for="City" class="control-label"></label>
                 <input asp-for="City" class="form-control" />
@@ -58,17 +55,18 @@
                 <label asp-for="InstitutionID" class="control-label"></label>
                 <select asp-for="InstitutionID" class="form-control" asp-items="ViewBag.InstitutionID"></select>
                 <span asp-validation-for="InstitutionID" class="text-danger"></span>
+                <a asp-controller="Institution" asp-action="Create" target="_blank">Can't Find the institution you want? Create New Institution</a>
             </div>
-            <div class="form-group">
-                <label asp-for="DateOfSubmission" class="control-label"></label>
-                <input asp-for="DateOfSubmission" class="form-control" />
-                <span asp-validation-for="DateOfSubmission" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EvaluationStatus" class="control-label"></label>
-                <select asp-for="EvaluationStatus" class="form-control"></select>
-                <span asp-validation-for="EvaluationStatus" class="text-danger"></span>
-            </div>
+            @if (isAdmin)
+            {
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="IsAdmin" /> @Html.DisplayNameFor(model => model.IsAdmin)
+                    </label>
+                </div>
+            }
+            <input asp-for="DateOfSubmission" type="hidden" value="@DateTime.Now" class="form-control" />
+            <input type="hidden" asp-for="EvaluationStatus" class="form-control" value="@EvaluationStatus.Preparing" />
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
@@ -80,6 +78,3 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

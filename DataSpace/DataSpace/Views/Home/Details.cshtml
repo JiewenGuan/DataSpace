@@ -110,10 +110,7 @@
     <thead>
         <tr>
             <th>
-                First Name
-            </th>
-            <th>
-                Family Name
+                Name
             </th>
             <th>
                 Role
@@ -126,9 +123,7 @@
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Participant.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Participant.FamilyName)
+                     @Html.DisplayFor(modelItem => item.Participant.FamilyName)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Role.Title)

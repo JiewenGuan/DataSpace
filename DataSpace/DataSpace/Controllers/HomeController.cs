@@ -182,7 +182,6 @@ namespace DataSpace.Controllers
 
         public IActionResult AddingPeople(int id)
         {
-            var experiment = _context.Experiments.FindAsync(id);
             ViewData["ExperimentID"] = id;
             ViewData["PersonID"] = new SelectList(_context.People, "PersonID", "Email");
             ViewData["RoleID"] = new SelectList(_context.ExpRoles, "RoleID", "Title");

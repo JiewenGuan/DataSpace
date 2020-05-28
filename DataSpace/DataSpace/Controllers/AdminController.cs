@@ -19,8 +19,8 @@ namespace DataSpace.Controllers
             _context = context;
         }
         public IActionResult Index()
-        {            
-            return Redirect("/Home/StatusCode/?code=103");
+        {
+            return RedirectToAction(nameof(Review));
 
             //var experiments = _context.Experiments.Include(e => e.Author).Include(e => e.LeadIstitution).Include(e => e.Mission);
             //return View(experiments.Where(p => p.EvaluationStatus == EvaluationStatus.Submitted).ToList());
