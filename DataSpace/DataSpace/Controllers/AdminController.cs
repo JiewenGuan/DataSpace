@@ -69,9 +69,21 @@ namespace DataSpace.Controllers
             return RedirectToAction(nameof(Review));
         }
 
+        // For managing an existing users - returns a list of users with a focus on IsAdmin == true.
         public IActionResult Accounts()
         {
-            return Redirect("/Home/StatusCode/?code=103");
+            // Remove this line when code is finalised.
+            //return Redirect("/Home/StatusCode/?code=103");
+
+            var users = _context.People
+                .Include(u => u.FirstName)
+                .Include(u => u.FamilyName)
+                .Include(u => u.PersonId)
+                .Include(u => u.IsAdmin)
+                .Include(u => u.Affiliation);
+            // This will only return admin users.
+            //return View(users.Where(n => n.IsAdmin == true).ToList());
+            return View(users.ToList());
         }
     }
 }
