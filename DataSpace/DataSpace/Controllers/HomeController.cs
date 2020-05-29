@@ -24,13 +24,28 @@ namespace DataSpace.Controllers
             _logger = logger;
             _context = context;
         }
-
+        [HttpGet]
         public IActionResult Index()
         {
 
 
             var experiments = _context.Experiments.Include(e => e.Author).Include(e => e.LeadIstitution).Include(e => e.Mission);
             return View(experiments.Where(p => p.EvaluationStatus == EvaluationStatus.Approved).ToList());
+        }
+        [HttpPost]
+        public async Task<IActionResult> Index(string Title, string Aim, string Institution, string Objective)
+        {
+
+            List<Experiment> experiments = await _context.Experiments.Where(p => p.EvaluationStatus == EvaluationStatus.Approved).ToListAsync();
+            if (!string.IsNullOrEmpty(Title))
+                experiments = experiments.FindAll(p => p.Title.Contains(Title));
+            if (!string.IsNullOrEmpty(Aim))
+                experiments = experiments.FindAll(p => p.Aim.Contains(Aim));
+            if (!string.IsNullOrEmpty(Institution))
+                experiments = experiments.FindAll(p => p.LeadIstitution.Name.Contains(Institution));
+            if (!string.IsNullOrEmpty(Objective))
+                experiments = experiments.FindAll(p => p.Objective.Contains(Objective));
+            return View(experiments);
         }
 
         // GET: Experiments/Create
@@ -194,7 +209,7 @@ namespace DataSpace.Controllers
             {
                 _context.Add(participation);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Edit),new { id = participation.ExperimentID });
+                return RedirectToAction(nameof(Edit), new { id = participation.ExperimentID });
             }
             ViewData["ExperimentID"] = new SelectList(_context.Experiments, "ExperimentID", "Aim", participation.ExperimentID);
             ViewData["PersonID"] = new SelectList(_context.People, "PersonID", "Affiliation", participation.PersonID);

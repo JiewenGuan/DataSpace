@@ -13,6 +13,14 @@
         <a asp-action="Create">Submmit new Experiment</a>
     </p>
 }
+<form class="form-inline" asp-action="Index" method="post">
+    <input type="text" class="form-control mb-2 mr-sm-2" id="Title" name="Title" placeholder="Title">
+    <input type="text" class="form-control mb-2 mr-sm-2" id="Aim" name="Aim" placeholder="Aim">
+    <input type="text" class="form-control mb-2 mr-sm-2" id="Objective" name="Objective" placeholder="Objective">
+    <input type="text" class="form-control mb-2 mr-sm-2" id="Institution" name="Institution" placeholder="Institution">
+    <input type="submit" value="Search" class="btn btn-primary mb-2" />
+
+</form>
 <table class="table">
     <thead>
         <tr>
