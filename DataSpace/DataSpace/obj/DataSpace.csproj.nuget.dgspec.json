@@ -1,25 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\heiye\\Desktop\\2020Summer\\capstone\\DataSpace\\DataSpace\\DataSpace\\DataSpace.csproj": {}
+    "C:\\Users\\yvzen\\OneDrive\\RMIT University\\Programming Project 1\\primary_code\\DataSpace\\DataSpace\\DataSpace\\DataSpace.csproj": {}
   },
   "projects": {
-    "C:\\Users\\heiye\\Desktop\\2020Summer\\capstone\\DataSpace\\DataSpace\\DataSpace\\DataSpace.csproj": {
+    "C:\\Users\\yvzen\\OneDrive\\RMIT University\\Programming Project 1\\primary_code\\DataSpace\\DataSpace\\DataSpace\\DataSpace.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\heiye\\Desktop\\2020Summer\\capstone\\DataSpace\\DataSpace\\DataSpace\\DataSpace.csproj",
+        "projectUniqueName": "C:\\Users\\yvzen\\OneDrive\\RMIT University\\Programming Project 1\\primary_code\\DataSpace\\DataSpace\\DataSpace\\DataSpace.csproj",
         "projectName": "DataSpace",
-        "projectPath": "C:\\Users\\heiye\\Desktop\\2020Summer\\capstone\\DataSpace\\DataSpace\\DataSpace\\DataSpace.csproj",
-        "packagesPath": "C:\\Users\\heiye\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\heiye\\Desktop\\2020Summer\\capstone\\DataSpace\\DataSpace\\DataSpace\\obj\\",
+        "projectPath": "C:\\Users\\yvzen\\OneDrive\\RMIT University\\Programming Project 1\\primary_code\\DataSpace\\DataSpace\\DataSpace\\DataSpace.csproj",
+        "packagesPath": "C:\\Users\\yvzen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\yvzen\\OneDrive\\RMIT University\\Programming Project 1\\primary_code\\DataSpace\\DataSpace\\DataSpace\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\heiye\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\yvzen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"

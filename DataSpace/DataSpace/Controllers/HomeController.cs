@@ -220,5 +220,19 @@ namespace DataSpace.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Edit), new { id = expid });
         }
+
+        // Search function - basic function that searches certain elements of the Experiments table for a match.
+        public async Task<IActionResult> Search(string searchString)
+        {
+            var experiments = from e in _context.Experiments
+                         select e;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                experiments = experiments.Where(s => s.Title.Contains(searchString));
+            }
+
+            return View(await experiments.ToListAsync());
+        }
     }
 }
