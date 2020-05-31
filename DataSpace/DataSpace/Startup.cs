@@ -28,7 +28,7 @@ namespace DataSpace
         {
             services.AddDbContext<SpaceContext>(options =>
             {
-                options.UseMySql("Server=localhost;Database=space;User=root;Password=123asd;", mySqlOptions => mySqlOptions
+                options.UseMySql(Configuration.GetConnectionString(nameof(SpaceContext)), mySqlOptions => mySqlOptions
                  .ServerVersion(new Version(8, 0, 18), ServerType.MySql));
                 //options.UseSqlServer(Configuration.GetConnectionString(nameof(SpaceContext)));
                 options.UseLazyLoadingProxies();
